@@ -18,9 +18,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             AdventurizerTheme {
                 MainScreen(
-                    onGenerateClick = { viewModel.generateNewActivity() },
-                    onFavoritesClick = {},
-                    onSettingsClick = {}
+                    onNavigateToFavorites = {},
+                    onNavigateToSettings = {}
                 )
             }
         }

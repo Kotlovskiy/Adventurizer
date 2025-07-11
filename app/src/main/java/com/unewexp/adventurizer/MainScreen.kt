@@ -32,9 +32,8 @@ import com.unewexp.adventurizer.ui.theme.AdventurizerTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
-    onGenerateClick: () -> Unit,
-    onFavoritesClick: () -> Unit,
-    onSettingsClick: () -> Unit
+    onNavigateToFavorites: () -> Unit,
+    onNavigateToSettings: () -> Unit
 ){
     val viewModel: AdventureViewModel = viewModel()
     val currentActivity by viewModel.currentActivity.collectAsState()
@@ -43,14 +42,14 @@ fun MainScreen(
             TopAppBar(
                 title = { Text(stringResource(R.string.app_name)) },
                 actions = {
-                    IconButton(onClick = onSettingsClick) {
+                    IconButton(onClick = onNavigateToSettings) {
                         Icon(Icons.Default.Settings, "Настройки")
                     }
                 })
                  },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = onGenerateClick,
+                onClick = { viewModel.generateNewActivity() },
                 modifier = Modifier.padding(bottom = 20.dp)
             ){
                 Icon(Icons.Default.Refresh, "Новая активность")
@@ -63,7 +62,7 @@ fun MainScreen(
                     horizontalArrangement = Arrangement.Center
                 ){
                     IconButton(
-                        onClick = onFavoritesClick
+                        onClick = onNavigateToFavorites
                     ) {
                         Icon(Icons.Filled.Favorite, contentDescription = "Избранное")
                     }
@@ -93,9 +92,8 @@ fun MainScreen(
 fun MainScreenPreview() {
     AdventurizerTheme {
         MainScreen(
-            onGenerateClick = {},
-            onFavoritesClick = {},
-            onSettingsClick = {}
+            onNavigateToFavorites = {},
+            onNavigateToSettings = {}
         )
     }
 }
