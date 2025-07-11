@@ -44,8 +44,8 @@ fun ActivityCard(
     activity: Activity,
     onLike: () -> Unit,
     onDisLike: () -> Unit,
-    onSwapUp: () -> Unit,
-    onSwapDown: () -> Unit
+    onSwipeUp: () -> Unit,
+    onSwipeDown: () -> Unit
 ){
     var offsetY by remember { mutableFloatStateOf(0f) }
     val swipeThreshold = 100.dp.value
@@ -64,8 +64,8 @@ fun ActivityCard(
                     detectVerticalDragGestures(
                         onDragEnd = {
                             when {
-                                offsetY < -swipeThreshold -> onSwapUp()
-                                offsetY > swipeThreshold -> onSwapDown()
+                                offsetY < -swipeThreshold -> onSwipeUp()
+                                offsetY > swipeThreshold -> onSwipeDown()
                                 else -> offsetY = 0f
                             }
                         },
@@ -146,8 +146,8 @@ fun ActivityCardPreview(){
             ),
             onLike = {},
             onDisLike = {},
-            onSwapUp = {},
-            onSwapDown = {}
+            onSwipeUp = {},
+            onSwipeDown = {}
         )
     }
 }
