@@ -12,7 +12,7 @@ class AdventureViewModel: ViewModel() {
     val history: StateFlow<List<Activity>> = _history.asStateFlow()
     private var currentPosition: Int = -1
     private var _currentActivity: MutableStateFlow<Activity?> = MutableStateFlow(null)
-    val currentActivity get() = _currentActivity.value
+    val currentActivity: StateFlow<Activity?> = _currentActivity.asStateFlow()
 
     fun generateNewActivity(){
         //пока нет сетевых запросов создаём заглушку со случайным ID и заголовком

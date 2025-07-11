@@ -64,8 +64,14 @@ fun ActivityCard(
                     detectVerticalDragGestures(
                         onDragEnd = {
                             when {
-                                offsetY < -swipeThreshold -> onSwipeUp()
-                                offsetY > swipeThreshold -> onSwipeDown()
+                                offsetY < -swipeThreshold -> {
+                                    onSwipeUp()
+                                    offsetY = 0f
+                                }
+                                offsetY > swipeThreshold -> {
+                                    onSwipeDown()
+                                    offsetY = 0f
+                                }
                                 else -> offsetY = 0f
                             }
                         },
