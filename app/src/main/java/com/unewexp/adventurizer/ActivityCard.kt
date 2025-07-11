@@ -112,7 +112,7 @@ fun ActivityCard(
                     Spacer(modifier = Modifier.height(10.dp))
                     DetailRow("Сложность:", activity.difficulty)
                     Spacer(modifier = Modifier.height(10.dp))
-                    DetailRow("Цена:", activity.price.toString())
+                    DetailRow("Цена:", if (activity.price == 0f) "Бесплатно" else "%.2f ₽".format(activity.price))
                 }
                 Row(
                     modifier = Modifier.width(300.dp),
