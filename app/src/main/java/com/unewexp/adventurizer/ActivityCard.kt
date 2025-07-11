@@ -16,10 +16,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Place
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -114,7 +114,7 @@ fun ActivityCard(
                 ){
                     IconButton(onClick = onLike){
                         Icon(
-                            Icons.Default.Star,
+                            Icons.Default.Favorite,
                             "В избранное",
                             tint = MaterialTheme.colorScheme.primary
                         )
