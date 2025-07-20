@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.unewexp.adventurizer.DB.AppDatabase
 import com.unewexp.adventurizer.ui.theme.AdventurizerTheme
 
 class MainActivity : ComponentActivity() {
@@ -16,7 +18,13 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AdventureViewModel::class.java)
+        val db = AppDatabase.getInstance(application)
+        viewModel = ViewModelProvider(this, object : ViewModelProvider.Factory{
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return AdventureViewModel(db.activityDao()) as T
+            }
+        }
+        ).get(AdventureViewModel::class.java)
         enableEdgeToEdge()
         setContent {
             val navController = rememberNavController()
