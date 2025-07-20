@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Adventurizer</string>
+    <string name="favourites">Избранное</string>
 </resources>
