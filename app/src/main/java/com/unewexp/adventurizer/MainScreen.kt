@@ -77,7 +77,7 @@ fun MainScreen(
             currentActivity?.let {
                 ActivityCard(
                     activity = currentActivity!!,
-                    onLike = { viewModel.addToFavorites() },
+                    onLike = { viewModel.addToFavorites(currentActivity!!) },
                     onDisLike = { viewModel.generateNewActivity() },
                     onSwipeUp = { viewModel.showNextActivity() },
                     onSwipeDown = { viewModel.showPrevActivity() }

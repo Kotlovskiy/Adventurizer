@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "activities")
-data class ActivityBdModel(
+data class ActivityDbModel(
     @PrimaryKey
     val serverId: String,
 

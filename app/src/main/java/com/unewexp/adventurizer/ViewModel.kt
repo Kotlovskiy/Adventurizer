@@ -3,6 +3,7 @@ package com.unewexp.adventurizer
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.unewexp.adventurizer.DB.ActivityDao
 import com.unewexp.adventurizer.retrofit.RetrofitClient
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,9 +12,11 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.UUID
 
-class AdventureViewModel: ViewModel() {
+class AdventureViewModel(private val activityDao: ActivityDao): ViewModel() {
 
     private val apiService = RetrofitClient.instance
+
+    val _allFavourites = activityDao.getAllActivities()
 
     private val _history = MutableStateFlow(emptyList<Activity>())
     val history: StateFlow<List<Activity>> = _history.asStateFlow()
@@ -35,8 +38,25 @@ class AdventureViewModel: ViewModel() {
         }
     }
 
-    //Пока нет хранилища функция ничего не делает
-    fun addToFavorites(){}
+    fun addToFavorites(activity: Activity){
+        viewModelScope.launch {
+            try {
+                activityDao.insertActivity(activity.toDbModel())
+            }catch (e: Exception){
+                Log.e("DB", "Insert failed", e)
+            }
+        }
+    }
+
+    fun deleteFavorite(id: String) {
+        viewModelScope.launch {
+            try {
+                activityDao.deleteActivity(id)
+            }catch (e: Exception){
+                Log.e("DB", "Delete failed", e)
+            }
+        }
+    }
 
     fun showPrevActivity(){
         if (currentPosition == -1){
