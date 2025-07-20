@@ -1,5 +1,6 @@
 package com.unewexp.adventurizer
 
+import android.app.Application
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -23,10 +24,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.unewexp.adventurizer.DB.AppDatabase
 import com.unewexp.adventurizer.ui.theme.AdventurizerTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,7 +40,15 @@ fun MainScreen(
     onNavigateToFavorites: () -> Unit,
     onNavigateToSettings: () -> Unit
 ){
-    val viewModel: AdventureViewModel = viewModel()
+    val appContext = LocalContext.current.applicationContext
+    val viewModel: AdventureViewModel = viewModel(
+        factory = object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                val db = AppDatabase.getInstance(appContext as Application)
+                return AdventureViewModel(db.activityDao()) as T
+            }
+        }
+    )
     val currentActivity by viewModel.currentActivity.collectAsState()
     Scaffold(
         topBar = {
