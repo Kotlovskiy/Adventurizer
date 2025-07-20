@@ -16,9 +16,7 @@ class AdventureViewModel(private val activityDao: ActivityDao): ViewModel() {
 
     private val apiService = RetrofitClient.instance
 
-    private val _allFavorities = activityDao.getAllActivities()
-    
-    val allFavorities: StateFlow<List<Activity>> = _allFavorities.asStateFlow()
+    val _allFavourites = activityDao.getAllActivities()
 
     private val _history = MutableStateFlow(emptyList<Activity>())
     val history: StateFlow<List<Activity>> = _history.asStateFlow()
