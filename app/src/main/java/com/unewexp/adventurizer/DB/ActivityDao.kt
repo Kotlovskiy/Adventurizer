@@ -9,10 +9,10 @@ import kotlinx.coroutines.flow.Flow
 interface ActivityDao {
 
     @Insert
-    suspend fun insertActivity(activity: ActivityBdModel)
+    suspend fun insertActivity(activity: ActivityDbModel)
 
     @Query("SELECT * FROM activities")
-    suspend fun getAllActivities(): Flow<List<ActivityBdModel>>
+    fun getAllActivities(): Flow<List<ActivityDbModel>>
 
     @Query("DELETE FROM activities WHERE serverId = :id")
     suspend fun deleteActivity(id: String)
