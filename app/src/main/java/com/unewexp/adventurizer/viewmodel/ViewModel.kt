@@ -1,16 +1,17 @@
-package com.unewexp.adventurizer
+package com.unewexp.adventurizer.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.unewexp.adventurizer.DB.ActivityDao
-import com.unewexp.adventurizer.retrofit.RetrofitClient
+import com.unewexp.adventurizer.Activity
+import com.unewexp.adventurizer.data.local.ActivityDao
+import com.unewexp.adventurizer.data.remote.RetrofitClient
+import com.unewexp.adventurizer.toDbModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.util.UUID
 
 class AdventureViewModel(private val activityDao: ActivityDao): ViewModel() {
 

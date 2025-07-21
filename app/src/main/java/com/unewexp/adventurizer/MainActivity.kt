@@ -9,8 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.unewexp.adventurizer.DB.AppDatabase
+import com.unewexp.adventurizer.data.local.AppDatabase
+import com.unewexp.adventurizer.ui.navigation.Route
+import com.unewexp.adventurizer.ui.screens.Favorites
+import com.unewexp.adventurizer.ui.screens.MainScreen
+import com.unewexp.adventurizer.ui.screens.Setting
 import com.unewexp.adventurizer.ui.theme.AdventurizerTheme
+import com.unewexp.adventurizer.viewmodel.AdventureViewModel
 
 class MainActivity : ComponentActivity() {
 

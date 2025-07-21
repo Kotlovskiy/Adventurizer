@@ -1,6 +1,5 @@
 package com.unewexp.adventurizer.ui.theme
 
-import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Build

@@ -1,4 +1,4 @@
-package com.unewexp.adventurizer.DB
+package com.unewexp.adventurizer.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert

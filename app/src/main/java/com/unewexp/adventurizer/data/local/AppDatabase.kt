@@ -1,4 +1,4 @@
-package com.unewexp.adventurizer.DB
+package com.unewexp.adventurizer.data.local
 
 import android.content.Context
 import androidx.room.Database

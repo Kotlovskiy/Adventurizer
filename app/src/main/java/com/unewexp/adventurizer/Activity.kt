@@ -1,6 +1,6 @@
 package com.unewexp.adventurizer
 
-import com.unewexp.adventurizer.DB.ActivityDbModel
+import com.unewexp.adventurizer.data.local.ActivityDbModel
 
 data class Activity(
     val id: String,

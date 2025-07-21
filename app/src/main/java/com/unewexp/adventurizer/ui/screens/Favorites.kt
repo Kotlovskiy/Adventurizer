@@ -1,4 +1,4 @@
-package com.unewexp.adventurizer
+package com.unewexp.adventurizer.ui.screens
 
 import android.app.Application
 import androidx.compose.foundation.layout.Arrangement
@@ -25,7 +25,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.unewexp.adventurizer.DB.AppDatabase
+import com.unewexp.adventurizer.viewmodel.AdventureViewModel
+import com.unewexp.adventurizer.R
+import com.unewexp.adventurizer.data.local.AppDatabase
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

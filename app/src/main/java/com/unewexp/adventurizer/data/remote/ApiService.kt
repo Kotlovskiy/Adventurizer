@@ -1,4 +1,4 @@
-package com.unewexp.adventurizer.retrofit
+package com.unewexp.adventurizer.data.remote
 
 import com.unewexp.adventurizer.Activity
 import retrofit2.Response

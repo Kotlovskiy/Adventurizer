@@ -1,4 +1,4 @@
-package com.unewexp.adventurizer.retrofit
+package com.unewexp.adventurizer.data.remote
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

@@ -1,4 +1,4 @@
-package com.unewexp.adventurizer
+package com.unewexp.adventurizer.ui.screens
 
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.edit
+import com.unewexp.adventurizer.R
 import com.unewexp.adventurizer.ui.theme.isDarkThemeEnabled
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -1,4 +1,4 @@
-package com.unewexp.adventurizer
+package com.unewexp.adventurizer.ui.navigation
 
 sealed class Route(val route: String) {
     object MainScreen: Route("main screen")

@@ -1,4 +1,4 @@
-package com.unewexp.adventurizer
+package com.unewexp.adventurizer.ui.components
 
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -36,6 +36,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.unewexp.adventurizer.Activity
 import com.unewexp.adventurizer.ui.theme.AdventurizerTheme
 import kotlin.math.roundToInt
 
