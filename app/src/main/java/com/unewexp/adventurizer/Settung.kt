@@ -12,6 +12,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedIconToggleButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -24,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.edit
+import com.unewexp.adventurizer.ui.theme.isDarkThemeEnabled
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,7 +50,8 @@ fun Setting(
 
         val appContext = LocalContext.current
         val sharedPreferences = appContext.getSharedPreferences("app_pref", Context.MODE_PRIVATE)
-        var isDarkTheme by remember { mutableStateOf(sharedPreferences.getBoolean("isDarkTheme", false)) }
+        val isDarkThemeEnabled = isDarkThemeEnabled(appContext)
+        var isDarkTheme by remember { mutableStateOf(isDarkThemeEnabled) }
         Box(
             modifier = Modifier.fillMaxSize().padding(innerPadding),
             contentAlignment = Alignment.TopStart
@@ -62,13 +65,13 @@ fun Setting(
                     verticalAlignment = Alignment.CenterVertically
                 ){
                     Text("Theme LIGHT/DARD")
-                    OutlinedIconToggleButton(
-                        isDarkTheme,
-                        {
-                            isDarkTheme = !isDarkTheme
-                            sharedPreferences.edit(commit = true) { putBoolean("isDarkTheme", isDarkTheme) }
+                    Switch(
+                        checked = isDarkTheme,
+                        onCheckedChange = {
+                            isDarkTheme = it
+                            sharedPreferences.edit { putBoolean("isDarkTheme", it) }
                         }
-                    ){}
+                    )
                 }
             }
         }
